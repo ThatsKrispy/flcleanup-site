@@ -1,5 +1,13 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Free Inspection CTAs to online booking widget (ThatsKrispy)
+
+- Repointed all "Free Inspection / Request Appointment / Schedule" CTAs site-wide
+  (38 buttons across 9 pages) from the contact-form anchor to the real online
+  booking widget (links.blueprintpathway.com/...), opening in a new tab. The
+  contact page and its form remain reachable via the Contact nav.
+
+
 ## 2026-06-30 — Odor Stripe checkout + real team & customer photos (ThatsKrispy)
 
 - The live site's odor page uses a Stripe checkout for purchase; our rebuilt page
