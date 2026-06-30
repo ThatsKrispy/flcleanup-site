@@ -1,5 +1,11 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Auto-updating footer year (ThatsKrispy)
+
+- Footer copyright year now updates automatically via JS (`#footer-year`), with a
+  static 2026 fallback in the HTML for crawlers and no-JS visitors.
+
+
 ## 2026-06-30 — Footer year + agency credit (ThatsKrispy)
 
 - Updated footer copyright to © 2026 and added a "Site by ThatsKrispy" credit

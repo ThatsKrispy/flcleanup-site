@@ -6,6 +6,9 @@
 (function(){
   'use strict';
 
+  /* Auto-update footer copyright year (static 2026 fallback in HTML) */
+  document.querySelectorAll('#footer-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+
   const toggle = document.getElementById('nav-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   if(toggle && mobileMenu){
