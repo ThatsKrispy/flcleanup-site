@@ -1,5 +1,26 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Legal pages, consent management & ADA widget hardening (ThatsKrispy)
+
+- Created dedicated **Privacy Policy, Cookie Policy, and Terms of Service** pages
+  (/privacy-policy/, /cookie-policy/, /terms-of-service/) and repointed every
+  footer, consent-banner, and form legal link to them site-wide. Removed the
+  inline legal sections from the Contact page and added the three pages to the
+  sitemap. The old /contact/#privacy-style anchors are gone.
+- **Consent management:** accept/decline handlers are now always attached, and a
+  new "Cookie Settings" control (in the footer and on the policy pages) reopens
+  the banner so visitors can change their choice at any time. Analytics (GTM)
+  still load only after consent.
+- **ADA widget fixes:**
+  - "High Contrast" was broken — the `.high-contrast` class had no CSS. Added a
+    real high-contrast theme (true-black background, white text/borders,
+    underlined links, button outlines).
+  - Larger Text, High Contrast, and Extra Spacing now **persist across pages and
+    reloads** (localStorage) and re-apply on load.
+  - Toggles now update `aria-pressed` correctly (the widget itself is now
+    accessible).
+
+
 ## 2026-06-30 — Fix stretched footer logo (ThatsKrispy)
 
 - The logo PNG is square (1080×1080) but was declared at ~2.9:1 (width 140 ×

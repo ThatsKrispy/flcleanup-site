@@ -374,3 +374,21 @@ ul{list-style:none}
   .stat-num{font-size:60px}
   .cio-price{font-size:56px}
 }
+
+/* LEGAL PAGES */
+.legal p{font-size:15px;color:var(--mist);line-height:1.8;margin-bottom:18px}
+.legal h2{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--paper);margin:32px 0 12px}
+.legal ul{list-style:none;margin:0 0 18px;padding:0}
+.legal li{font-size:15px;color:var(--mist);line-height:1.75;padding-left:20px;position:relative;margin-bottom:9px}
+.legal li::before{content:'';position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--harbor)}
+.legal a{color:var(--lagoon);text-decoration:underline}
+.legal strong{color:var(--paper)}
+.legal .muted{font-size:14px;color:var(--mist);margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+
+/* ACCESSIBILITY WIDGET STATES (persisted via localStorage) */
+body.a11y-large{font-size:18px}
+body.a11y-spacing{letter-spacing:.04em;line-height:1.9}
+body.high-contrast{--void:#000;--panel:#000;--panel2:#0a0d12;--line:#8a98a6;--line2:#ffffff;--paper:#ffffff;--mist:#eef2f6}
+body.high-contrast,body.high-contrast .topbar,body.high-contrast .site-footer{background:#000}
+body.high-contrast a:not(.btn):not(.area-chip):not(.svc-pill):not(.region-link){text-decoration:underline}
+body.high-contrast .btn{outline:2px solid #fff;outline-offset:2px}

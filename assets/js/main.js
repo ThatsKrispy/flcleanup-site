@@ -46,19 +46,20 @@
 
   const banner = document.getElementById('consent-banner');
   const KEY = 'flc_consent_v1';
-  if(banner && !localStorage.getItem(KEY)){
-    banner.classList.add('visible');
-    document.getElementById('consent-accept').addEventListener('click', function(){
-      localStorage.setItem(KEY,'accepted');
-      banner.classList.remove('visible');
-      loadTracking();
+  if(banner){
+    const showBanner = function(){ banner.classList.add('visible'); };
+    const hideBanner = function(){ banner.classList.remove('visible'); };
+    const acceptBtn = document.getElementById('consent-accept');
+    const declineBtn = document.getElementById('consent-decline');
+    acceptBtn && acceptBtn.addEventListener('click', function(){ localStorage.setItem(KEY,'accepted'); hideBanner(); loadTracking(); });
+    declineBtn && declineBtn.addEventListener('click', function(){ localStorage.setItem(KEY,'declined'); hideBanner(); });
+    const stored = localStorage.getItem(KEY);
+    if(!stored){ showBanner(); }
+    else if(stored === 'accepted'){ loadTracking(); }
+    /* let users reopen the banner from any "Cookie Settings" control */
+    document.querySelectorAll('.cookie-settings,[data-cookie-settings]').forEach(function(el){
+      el.addEventListener('click', function(e){ e.preventDefault(); showBanner(); });
     });
-    document.getElementById('consent-decline').addEventListener('click', function(){
-      localStorage.setItem(KEY,'declined');
-      banner.classList.remove('visible');
-    });
-  } else if(localStorage.getItem(KEY) === 'accepted'){
-    loadTracking();
   }
 
   function loadTracking(){
@@ -85,22 +86,30 @@
         adaBtn.setAttribute('aria-expanded','false');
       }
     });
+    const A11Y_KEY = 'flc_a11y_v1';
+    const A11Y_MAP = { 'ada-font':'large', 'ada-contrast':'contrast', 'ada-spacing':'spacing' };
+    const readA11y = function(){ try { return JSON.parse(localStorage.getItem(A11Y_KEY)) || {}; } catch(e){ return {}; } };
+    const applyA11y = function(s){
+      document.body.classList.toggle('a11y-large', !!s.large);
+      document.body.classList.toggle('high-contrast', !!s.contrast);
+      document.body.classList.toggle('a11y-spacing', !!s.spacing);
+    };
+    const a11yState = readA11y();
+    applyA11y(a11yState);
     document.querySelectorAll('.ada-toggle').forEach(function(t){
+      const key = A11Y_MAP[t.id];
+      const on = !!a11yState[key];
+      t.classList.toggle('on', on);
+      t.setAttribute('aria-pressed', on ? 'true' : 'false');
       t.addEventListener('click', function(){
-        this.classList.toggle('on');
-        applyADA();
+        const next = !this.classList.contains('on');
+        this.classList.toggle('on', next);
+        this.setAttribute('aria-pressed', next ? 'true' : 'false');
+        const s = readA11y(); s[key] = next;
+        localStorage.setItem(A11Y_KEY, JSON.stringify(s));
+        applyA11y(s);
       });
     });
-  }
-
-  function applyADA(){
-    const fontSize = document.getElementById('ada-font')?.classList.contains('on');
-    const contrast = document.getElementById('ada-contrast')?.classList.contains('on');
-    const spacing  = document.getElementById('ada-spacing')?.classList.contains('on');
-    document.body.style.fontSize = fontSize ? '18px' : '';
-    document.body.classList.toggle('high-contrast', !!contrast);
-    document.body.style.letterSpacing = spacing ? '.5px' : '';
-    document.body.style.lineHeight    = spacing ? '1.9'  : '';
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
