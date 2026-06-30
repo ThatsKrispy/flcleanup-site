@@ -20,6 +20,19 @@
         toggle.setAttribute('aria-expanded','false');
       }
     });
+    /* Force-close if the viewport widens past the breakpoint where
+       the desktop nav takes over — otherwise an open mobile menu
+       stays open (e.g. after rotating a tablet or resizing a
+       browser window) and overlaps the desktop nav, which is
+       otherwise hidden purely by toggle state, not viewport width. */
+    const closeIfDesktop = function(){
+      if(window.innerWidth > 768 && mobileMenu.getAttribute('data-open') === 'true'){
+        mobileMenu.setAttribute('data-open','false');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    };
+    window.addEventListener('resize', closeIfDesktop);
+    closeIfDesktop();
   }
 
   document.querySelectorAll('.faq-btn').forEach(function(btn){
