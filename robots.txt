@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://flcleanup.com/sitemap.xml
