@@ -1,5 +1,13 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Fix stretched footer logo (ThatsKrispy)
+
+- The logo PNG is square (1080×1080) but was declared at ~2.9:1 (width 140 ×
+  height 48) and the footer rule lacked `width:auto`, so the footer logo rendered
+  horizontally crushed. Added `width:auto` to the footer logo and corrected the
+  width/height attributes to 1:1 site-wide (header and footer).
+
+
 ## 2026-06-30 — Folded service areas into Services, removed standalone page (ThatsKrispy)
 
 - Removed the standalone /florida-service-area/ page — the interactive map and
