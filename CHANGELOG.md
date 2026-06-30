@@ -1,5 +1,16 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Odor Stripe checkout + real team & customer photos (ThatsKrispy)
+
+- The live site's odor page uses a Stripe checkout for purchase; our rebuilt page
+  only had call/contact buttons. Wired the real Stripe link
+  (buy.stripe.com/...) into the odor page's "Purchase & Schedule — $997" CTAs.
+- Showcased the real team: added the FL Cleanup crew photo (in front of the
+  branded truck) to the homepage "Not a franchise. Your neighbors." section, and
+  replaced the three review letter-avatars with the actual customer photos
+  (Kevin, Alexa, Carlos). All optimized to WebP and lazy-loaded.
+
+
 ## 2026-06-30 — Mobile: fix bottom overflow / page expansion (ThatsKrispy)
 
 - Footer legal links were a non-wrapping flex row; with the added "Cookie
