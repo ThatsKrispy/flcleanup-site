@@ -1,5 +1,29 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Service-areas rebuild + homepage imagery (ThatsKrispy)
+
+Built on top of the emoji-removal / brand-flare pass — kept the white-line SVG
+icon style; no colorful emoji introduced.
+
+Service areas (/florida-service-area/):
+- Rebuilt from a thin county list into a high-value local-SEO + conversion page.
+- Custom, on-brand interactive SVG map of Florida with six color-coded,
+  clickable and keyboard-accessible region pins that jump to each region's
+  section, plus a matching region link list for mobile and accessibility.
+- New sections: "statewide but local" response cards, enriched per-region copy
+  with internal links to service pages, an "If disaster strikes — what to do
+  right now" emergency guide, and a service-area FAQ.
+- SEO: stronger title/description, one H1 with H2/H3 structure, internal
+  interlinking, LocalBusiness areaServed schema (counties + state), FAQPage schema.
+- Honest copy only — no fabricated guarantees; response messaging avoids
+  specific time promises.
+
+Homepage:
+- Replaced the two remaining icon placeholders in the services grid with real
+  photos — Odor Treatment now shows whole-home CIO₂ fogging; Large Loss shows
+  commercial decontamination (new WebP, lazy-loaded).
+
+
 ## 2026-06-29 — Unused asset cleanup (ThatsKrispy)
 
 - Removed the entire `wp-content/uploads/elementor/` folder (leftover Elementor
