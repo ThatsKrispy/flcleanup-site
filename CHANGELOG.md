@@ -1,5 +1,11 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Footer year + agency credit (ThatsKrispy)
+
+- Updated footer copyright to © 2026 and added a "Site by ThatsKrispy" credit
+  (linking to thatskrispy.com) across all pages.
+
+
 ## 2026-06-30 — Legal pages, consent management & ADA widget hardening (ThatsKrispy)
 
 - Created dedicated **Privacy Policy, Cookie Policy, and Terms of Service** pages
