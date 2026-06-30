@@ -1,5 +1,13 @@
 # FL Cleanup — Changelog
 
+## 2026-06-29 — Unused asset cleanup (ThatsKrispy)
+
+- Removed the entire `wp-content/uploads/elementor/` folder (leftover Elementor
+  CSS + ~64 local Google Font files that no page loads — fonts come from Google's
+  CDN) and all orphaned WordPress image sizes/screenshots. 142 files removed.
+- `wp-content/uploads` shrank from ~29 MB to ~2.6 MB. Only the 10 images the live
+  pages actually reference remain.
+
 ## 2026-06-29 — Dark-theme cleanup pass (ThatsKrispy)
 
 Context: the site was migrated to the "Dark Shield" dark theme. The stylesheet
