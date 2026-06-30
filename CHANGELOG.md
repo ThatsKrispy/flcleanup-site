@@ -1,5 +1,18 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Folded service areas into Services, removed standalone page (ThatsKrispy)
+
+- Removed the standalone /florida-service-area/ page — the interactive map and
+  long county/city lists felt off and added little. 301-redirected the URL to
+  /services/ and repointed the "Service Areas" nav and footer links to a new
+  /services/#service-area anchor.
+- Added a minimal "Serving all of Florida" coverage section to the Services page:
+  six region chips and a statewide call CTA. No map, no county lists.
+- Moved the LocalBusiness areaServed schema onto the Services page so the local
+  SEO signal is kept without a dedicated page.
+- Removed the now-unused map/region CSS from the stylesheet; updated the sitemap.
+
+
 ## 2026-06-30 — Service-areas rebuild + homepage imagery (ThatsKrispy)
 
 Built on top of the emoji-removal / brand-flare pass — kept the white-line SVG
