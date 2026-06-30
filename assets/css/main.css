@@ -393,3 +393,8 @@ body.high-contrast{--void:#000;--panel:#000;--panel2:#0a0d12;--line:#8a98a6;--li
 body.high-contrast,body.high-contrast .topbar,body.high-contrast .site-footer{background:#000}
 body.high-contrast a:not(.btn):not(.area-chip):not(.svc-pill):not(.region-link){text-decoration:underline}
 body.high-contrast .btn{outline:2px solid #fff;outline-offset:2px}
+
+/* TEAM / COMPANY PHOTO BAND */
+.photo-band{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);margin:0}
+.photo-band img{width:100%;height:clamp(240px,36vw,420px);object-fit:cover;display:block}
+.photo-band figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 24px 18px;background:linear-gradient(0deg,rgba(7,11,16,.9),rgba(7,11,16,0));font-size:14.5px;font-weight:700;color:var(--paper)}

@@ -1,5 +1,15 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — More real team/company photos throughout (ThatsKrispy)
+
+- Rolled the real FL Cleanup team photos (sourced from the live site, optimized to
+  WebP) across more pages via a reusable captioned photo band:
+  homepage (dispatch team — "you reach James and his team directly"),
+  contact (full crew — "when you call you reach our real Florida crew"),
+  services (crew with restoration equipment), and post-construction (crew on the
+  job site). All lazy-loaded with descriptive alt text.
+
+
 ## 2026-06-30 — Free Inspection CTAs to online booking widget (ThatsKrispy)
 
 - Repointed all "Free Inspection / Request Appointment / Schedule" CTAs site-wide
