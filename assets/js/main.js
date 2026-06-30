@@ -111,4 +111,94 @@
     });
   });
 
+  /* CONTACT FORM — client-side validation with inline error + success
+     states. If a delivery endpoint is set via data-endpoint on the form
+     (e.g. a Formspree / Web3Forms / Cloudflare URL), the request is POSTed
+     there and the UI reflects the real response. With no endpoint set the
+     form still validates and confirms, and prompts an emergency call. */
+  const cform = document.getElementById('inspection-form');
+  if(cform){
+    const status = document.getElementById('form-status');
+
+    function clearError(input){
+      input.classList.remove('invalid');
+      input.removeAttribute('aria-invalid');
+      const next = input.parentNode.querySelector('.field-error');
+      if(next){ next.remove(); }
+    }
+    function setError(input, msg){
+      input.classList.add('invalid');
+      input.setAttribute('aria-invalid','true');
+      if(!input.parentNode.querySelector('.field-error')){
+        const span = document.createElement('span');
+        span.className = 'field-error';
+        span.textContent = msg;
+        input.parentNode.appendChild(span);
+      }
+    }
+    function showStatus(type, msg){
+      status.className = 'form-status show ' + type;
+      status.textContent = msg;
+    }
+
+    const nameEl  = cform.querySelector('#cf-name');
+    const phoneEl = cform.querySelector('#cf-phone');
+    const emailEl = cform.querySelector('#cf-email');
+
+    [nameEl, phoneEl, emailEl].forEach(function(el){
+      if(el){ el.addEventListener('input', function(){ clearError(el); }); }
+    });
+
+    cform.addEventListener('submit', function(e){
+      e.preventDefault();
+      let firstInvalid = null;
+
+      clearError(nameEl); clearError(phoneEl); if(emailEl){ clearError(emailEl); }
+
+      if(!nameEl.value.trim()){
+        setError(nameEl, 'Please enter your name.'); firstInvalid = firstInvalid || nameEl;
+      }
+      const digits = phoneEl.value.replace(/\D/g, '');
+      if(digits.length < 10){
+        setError(phoneEl, 'Please enter a valid phone number with area code.'); firstInvalid = firstInvalid || phoneEl;
+      }
+      if(emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())){
+        setError(emailEl, 'Please enter a valid email address.'); firstInvalid = firstInvalid || emailEl;
+      }
+
+      if(firstInvalid){
+        showStatus('error', 'Please fix the highlighted fields and try again.');
+        firstInvalid.focus();
+        return;
+      }
+
+      const name = nameEl.value.trim().split(' ')[0];
+      const endpoint = cform.getAttribute('data-endpoint');
+      const btn = cform.querySelector('button[type="submit"]');
+
+      if(endpoint){
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {'Accept': 'application/json'},
+          body: new FormData(cform)
+        }).then(function(r){
+          if(r.ok){
+            showStatus('success', 'Thanks, ' + name + ' — your request has been sent. We’ll call you back shortly. For an emergency, call 877-224-2532 now — we answer 24/7.');
+            cform.reset();
+          } else { throw new Error('bad response'); }
+        }).catch(function(){
+          showStatus('error', 'Something went wrong sending your request. Please call us directly at 877-224-2532 — we’re available 24/7.');
+        }).finally(function(){
+          btn.disabled = false;
+          btn.textContent = 'Send Request — We’ll Call Within 60 Min';
+        });
+      } else {
+        showStatus('success', 'Thanks, ' + name + ' — your request is ready. For the fastest response, call 877-224-2532 now — we answer 24/7, including weekends and holidays.');
+        cform.reset();
+      }
+    });
+  }
+
 })();

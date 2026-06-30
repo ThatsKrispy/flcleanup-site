@@ -11,7 +11,10 @@
 <meta property="og:description" content="Contact FL Cleanup for water, mold, fire, and storm damage restoration across Florida. 24/7 emergency response. Free inspections. Call 877-224-2532.">
 <meta property="og:url" content="https://flcleanup.com/contact/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#085AA4">
+<meta property="og:image" content="https://flcleanup.com/wp-content/uploads/2025/03/176-_TKR7948.jpg">
+<meta property="og:image:alt" content="The FL Cleanup restoration crew with water extraction equipment">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070B10">
 <link rel="icon" href="/wp-content/uploads/2022/09/florida-cleanup-300x300-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/main.css">
@@ -75,10 +78,10 @@
 <div class="trust-strip" aria-label="Trust signals"><div class="wrap tb-inner"><div class="tb-item">Licensed &amp; Insured</div><div class="tb-sep" aria-hidden="true"></div><div class="tb-item">IICRC Certified</div><div class="tb-sep" aria-hidden="true"></div><div class="tb-item">300+ Google Reviews</div><div class="tb-sep" aria-hidden="true"></div><div class="tb-item">Family-Owned Since 2016</div><div class="tb-sep" aria-hidden="true"></div><div class="tb-item">All of Florida</div></div></div>
 <section class="section">
   <div class="wrap" style="display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:start">
-    <div style="background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:44px" id="form" role="main" aria-label="Contact form">
+    <div style="background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:44px" id="form" role="main" aria-label="Contact form">
       <h2 class="d4" style="margin-bottom:8px">Request a free inspection</h2>
       <p style="font-size:14px;color:var(--mist);margin-bottom:28px">We'll respond within 60 minutes. Emergency? Call now: <a href="tel:+18772242532" style="color:var(--harbor);font-weight:700">877-224-2532</a></p>
-      <form action="#" method="post" aria-label="Free inspection request form" novalidate>
+      <form id="inspection-form" action="#" method="post" aria-label="Free inspection request form" novalidate data-endpoint="">
         <div class="fg-row">
           <div class="fg"><label for="cf-name">Full Name <span aria-label="required" style="color:var(--blaze)">*</span></label><input id="cf-name" name="name" type="text" placeholder="Your name" required autocomplete="name" aria-required="true"></div>
           <div class="fg"><label for="cf-phone">Phone <span aria-label="required" style="color:var(--blaze)">*</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(305) 000-0000" required autocomplete="tel" aria-required="true"></div>
@@ -98,6 +101,7 @@
         </fieldset>
         <div class="fg"><label for="cf-msg">Message (optional)</label><textarea id="cf-msg" name="message" placeholder="Describe your situation — any details help us prepare..." rows="4"></textarea></div>
         <button type="submit" class="btn btn-palm btn-full btn-lg" style="justify-content:center">Send Request — We'll Call Within 60 Min</button>
+        <div class="form-status" id="form-status" role="alert" aria-live="assertive"></div>
         <div class="form-lock">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5D9F3A" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span>100% secure · No spam · By submitting, you authorize FL Cleanup to contact you via phone, email, or text. See our <a href="#privacy">Privacy Policy</a>.</span>
@@ -112,19 +116,19 @@
         <a href="tel:+18772242532" style="font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:#fff;display:block;margin-bottom:6px">877-224-2532</a>
         <p style="font-size:12px;color:rgba(255,255,255,.75)">24 Hours · 7 Days a Week</p>
       </div>
-      <div style="background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:26px">
+      <div style="background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:26px">
         <div style="font-size:24px;margin-bottom:8px" aria-hidden="true">📍</div>
         <h3 class="d4" style="margin-bottom:8px">Our location</h3>
         <address style="font-style:normal;font-size:14px;color:var(--mist);line-height:1.7">14629 SW 104th St #253, Miami, FL 33186</address>
         <p style="margin-top:8px;font-size:13px;color:var(--blaze);font-weight:600">Serving all of Florida — not just Miami</p>
       </div>
-      <div style="background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:26px">
+      <div style="background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:26px">
         <div style="font-size:24px;margin-bottom:8px" aria-hidden="true">✉️</div>
         <h3 class="d4" style="margin-bottom:8px">Email us</h3>
         <a href="mailto:contact@flcleanup.com" style="color:var(--harbor);font-weight:600;font-size:14px">contact@flcleanup.com</a>
         <p style="margin-top:8px;font-size:13px;color:var(--mist)">For non-emergencies. We respond within a few hours.</p>
       </div>
-      <div style="background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:26px">
+      <div style="background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:26px">
         <h3 class="d4" style="margin-bottom:10px">Hours</h3>
         <p style="font-size:16px;font-weight:800;color:var(--palm)">24 Hours · 7 Days a Week</p>
       </div>
@@ -227,7 +231,6 @@
   <div class="ada-control"><span>Extra Spacing</span><button class="ada-toggle" id="ada-spacing" aria-pressed="false" aria-label="Toggle extra spacing"></button></div>
 </div>
 <a href="tel:+18772242532" class="sticky-call" aria-label="Call us now at 877-224-2532">Call 877-224-2532</a>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCM9C76Z" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
