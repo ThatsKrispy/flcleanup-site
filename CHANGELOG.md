@@ -1,5 +1,17 @@
 # FL Cleanup — Changelog
 
+## 2026-06-30 — Mobile: fix bottom overflow / page expansion (ThatsKrispy)
+
+- Footer legal links were a non-wrapping flex row; with the added "Cookie
+  Settings" link they overflowed the screen on phones and caused horizontal
+  scroll ("page expansion"). Added flex-wrap so they wrap cleanly.
+- Added `overflow-x:clip` on <html> as a global guard against horizontal scroll
+  (clip preserves the sticky header, unlike overflow:hidden).
+- Constrained the floating "Call" bar to max viewport width so it can't overflow
+  on narrow phones, and reserved footer bottom padding on mobile so the fixed CTA
+  no longer covers the footer's bottom content.
+
+
 ## 2026-06-30 — Auto-updating footer year (ThatsKrispy)
 
 - Footer copyright year now updates automatically via JS (`#footer-year`), with a
