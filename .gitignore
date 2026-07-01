@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Local scratch / working files (never ship these)
+_*.png
+_*.svg
+_*.html
+
+# WordPress export leftovers we don't serve
+wp-content/uploads/elementor/
+
+# Worker deps (deployed via wrangler, not committed)
+worker/node_modules/
