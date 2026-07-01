@@ -1,5 +1,27 @@
 # FL Cleanup — Changelog
 
+## 2026-07-01 — Mobile overflow fix + working contact form (ThatsKrispy)
+
+- Fixed mobile horizontal overflow ("page pulled wider"). Several sections used
+  inline two-column grids with fixed-pixel columns (e.g. `1fr 400px`, `1fr 380px`,
+  `1fr auto`) across the homepage, contact, services, odor, and post-construction
+  pages. Inline styles can't be overridden by the class-based media queries, so
+  those columns never collapsed and forced the layout past the viewport. Added a
+  single `[style*="grid-template-columns"]{...!important}` rule (≤768px) that
+  collapses every inline grid to one column on mobile, plus `overflow-x:clip` on
+  `body`, wrapping for full-width button labels, and trimmed the contact form's
+  card padding on small screens.
+- Wired the contact form to a real destination. It previously had an empty
+  `data-endpoint` and went nowhere. Added a self-hosted Cloudflare Pages Function
+  (`functions/api/contact.js`) that validates, blocks spam via a honeypot, and
+  emails each lead to contact@flcleanup.com — no third-party form dashboard. The
+  form now posts to `/api/contact`; "Send a Message" CTAs jump to the form anchor.
+  ACTION REQUIRED before this delivers mail: in Cloudflare Pages → Settings →
+  Environment variables, add `RESEND_API_KEY` (free key from resend.com) and
+  verify the flcleanup.com sending domain in Resend. Until then the form shows an
+  error prompting visitors to call.
+
+
 ## 2026-06-30 — More real team/company photos throughout (ThatsKrispy)
 
 - Rolled the real FL Cleanup team photos (sourced from the live site, optimized to

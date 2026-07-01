@@ -90,7 +90,8 @@
     <div style="background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:44px" id="form" role="main" aria-label="Contact form">
       <h2 class="d4" style="margin-bottom:8px">Request a free inspection</h2>
       <p style="font-size:14px;color:var(--mist);margin-bottom:28px">We'll respond within 60 minutes. Emergency? Call now: <a href="tel:+18772242532" style="color:var(--harbor);font-weight:700">877-224-2532</a></p>
-      <form id="inspection-form" action="#" method="post" aria-label="Free inspection request form" novalidate data-endpoint="">
+      <form id="inspection-form" action="/api/contact" method="post" aria-label="Free inspection request form" novalidate data-endpoint="/api/contact">
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" hidden>
         <div class="fg-row">
           <div class="fg"><label for="cf-name">Full Name <span aria-label="required" style="color:var(--blaze)">*</span></label><input id="cf-name" name="name" type="text" placeholder="Your name" required autocomplete="name" aria-required="true"></div>
           <div class="fg"><label for="cf-phone">Phone <span aria-label="required" style="color:var(--blaze)">*</span></label><input id="cf-phone" name="phone" type="tel" placeholder="(305) 000-0000" required autocomplete="tel" aria-required="true"></div>
