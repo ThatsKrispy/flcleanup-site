@@ -1,5 +1,21 @@
 # FL Cleanup — Changelog
 
+## 2026-07-01 — Contact form: 100% Cloudflare-native email (no third party) (ThatsKrispy)
+
+- Replaced the Resend-based Pages Function with a fully Cloudflare-native email
+  Worker (`worker/`). Cloudflare's built-in `send_email` binding delivers the
+  lead notification through Cloudflare's own mail infrastructure — no external
+  service, no API key. Sending to a verified Email Routing destination is free
+  on any plan. Removed `functions/api/contact.js`.
+- The Worker validates, honeypot-guards, and emails each lead (Reply-To set to
+  the customer). Deployed via `wrangler deploy`; a Worker route at
+  `flcleanup.com/api/contact*` lets the existing form post same-origin with no
+  front-end change. Worker source is hidden from the public site via `_redirects`.
+  ACTION REQUIRED (one-time, all free): (1) enable Email Routing on flcleanup.com,
+  (2) add + verify your real inbox as a Destination address, (3) put that address
+  in `worker/wrangler.toml` (both `send_email` and `LEAD_TO`), (4) `npx wrangler
+  login` then `npx wrangler deploy` from `worker/`, (5) uncomment the route.
+
 ## 2026-07-01 — Mobile overflow fix + working contact form (ThatsKrispy)
 
 - Fixed mobile horizontal overflow ("page pulled wider"). Several sections used
@@ -16,10 +32,8 @@
   (`functions/api/contact.js`) that validates, blocks spam via a honeypot, and
   emails each lead to contact@flcleanup.com — no third-party form dashboard. The
   form now posts to `/api/contact`; "Send a Message" CTAs jump to the form anchor.
-  ACTION REQUIRED before this delivers mail: in Cloudflare Pages → Settings →
-  Environment variables, add `RESEND_API_KEY` (free key from resend.com) and
-  verify the flcleanup.com sending domain in Resend. Until then the form shows an
-  error prompting visitors to call.
+  (Superseded same day — the Resend Pages Function was replaced by a native
+  Cloudflare email Worker; see the entry above.)
 
 
 ## 2026-06-30 — More real team/company photos throughout (ThatsKrispy)

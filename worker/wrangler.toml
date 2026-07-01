@@ -1,0 +1,27 @@
+# FL Cleanup contact-form email Worker — deploy with:  npx wrangler deploy
+# (run `npx wrangler login` first). Fully Cloudflare-native, no third party.
+name = "flcleanup-contact"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+# ── Native email binding (no API key, no external service) ───────────────────
+# Delivers to a VERIFIED destination address in Cloudflare Email Routing.
+# Sends to verified destinations are free on every plan.
+#   1. Dashboard → flcleanup.com → Email → Email Routing → enable it.
+#   2. Add your real inbox as a Destination address and click the verify link.
+#   3. Put that same verified address in BOTH places below.
+send_email = [
+  { name = "SEB", destination_address = "REPLACE_WITH_VERIFIED_INBOX@example.com" }
+]
+
+[vars]
+LEAD_TO   = "REPLACE_WITH_VERIFIED_INBOX@example.com"  # verified destination (where leads land)
+LEAD_FROM = "contact@flcleanup.com"                    # a custom @flcleanup.com address
+
+# ── Serve the Worker at your domain so the form posts same-origin ────────────
+# Uncomment once flcleanup.com is active on Cloudflare. This makes the existing
+# form (POST /api/contact) reach the Worker with no front-end change and no CORS.
+# routes = [
+#   { pattern = "flcleanup.com/api/contact*", zone_name = "flcleanup.com" }
+# ]
